@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pyramid viewer</title>
+<style>
+html,body{margin:0;height:100%;background:linear-gradient(#cfc9bd,#c4ac8e);font-family:system-ui,sans-serif;color:#2a241c}
+#v{position:fixed;inset:0}
+#msg{position:fixed;left:0;right:0;bottom:18px;text-align:center;font-size:14px;opacity:.75;pointer-events:none}
+</style></head><body>
+<div id="v"></div><div id="msg">Loading 3D model (19MB)...</div>
+<script type="module">
+const m=document.getElementById('msg');
+try{
+  const {mountPyramidHero}=await import('./pyramid-hero-exact.js');
+  const h=mountPyramidHero(document.getElementById('v'),{transparent:true,onReady:()=>{m.textContent='Drag to rotate. Scroll or pinch to zoom.'},onError:e=>{m.textContent='3D could not load on this device (needs WebGL2).';console.error(e)}});
+}catch(e){m.textContent='3D could not load: '+e.message}
+</script></body></html>
