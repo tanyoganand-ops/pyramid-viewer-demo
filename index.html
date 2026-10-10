@@ -10,7 +10,7 @@ html,body{margin:0;height:100%;background:linear-gradient(#cfc9bd,#c4ac8e);font-
 <script type="module">
 const m=document.getElementById('msg');
 try{
-  const {mountPyramidHero}=await import('./pyramid-hero-exact.js');
+  const {mountPyramidHero}=await import('./1-pyramid-hero-exact.js');
   const h=mountPyramidHero(document.getElementById('v'),{transparent:true,onReady:()=>{m.textContent='Drag to rotate. Scroll or pinch to zoom.'},onError:e=>{m.textContent='3D could not load on this device (needs WebGL2).';console.error(e)}});
 }catch(e){m.textContent='3D could not load: '+e.message}
 </script></body></html>
